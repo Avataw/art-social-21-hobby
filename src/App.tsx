@@ -1,7 +1,9 @@
 import React from 'react';
 import {HobbyAppBar} from "./HobbyAppBar";
-import {Box, Button, createStyles, Grid, makeStyles, Theme, Typography} from "@material-ui/core";
+import {Box, createStyles, Grid, makeStyles, Theme, Typography} from "@material-ui/core";
 import searching from "./undraw/undraw_searching.svg"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {StartQuizButton} from "./StartQuizButton";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -40,49 +42,52 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
     const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-        <HobbyAppBar/>
-        <Grid container
-              alignItems="center"
-              justify="center">
-            <Grid item xs={11}>
-                <img src={searching} className={classes.media} alt={"someone searching"}/>
-            </Grid>
-            <Grid item xs={12}>
-                <Box className={classes.panel}>
-                    <Grid container
-                          alignItems="center"
-                          justify="center"
-                    spacing={1}>
-                        <Grid item xs={11}>
-                            <Typography variant={"h4"} className={classes.panelText}>
-                                Looking for a hobby?
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={10}>
-                            <Typography variant={"h5"} className={classes.panelText}>
-                                Answer the questions below to help us find your
-                                new and exciting passion!
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Box>
-            </Grid>
-            <Grid item>
-                <Box className={classes.buttonPanel} >
-                <Button variant="outlined" size="large" className={classes.button}>
-                    <Typography variant={"h4"} className={classes.buttonText}>
-                        Start Quiz!
-                    </Typography>
-                </Button>
-                </Box>
-            </Grid>
+    return (
+        <Router>
+            <div className={classes.root}>
 
-        </Grid>
+                <HobbyAppBar/>
+                <Switch>
+                    <Route path="/quiz">
+                        test
+                    </Route>
+                    <Route path="/">
+                        <Grid container
+                              alignItems="center"
+                              justify="center">
+                            <Grid item xs={11}>
+                                <img src={searching} className={classes.media} alt={"someone searching"}/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Box className={classes.panel}>
+                                    <Grid container
+                                          alignItems="center"
+                                          justify="center"
+                                          spacing={1}>
+                                        <Grid item xs={11}>
+                                            <Typography variant={"h4"} className={classes.panelText}>
+                                                Looking for a hobby?
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item xs={10}>
+                                            <Typography variant={"h5"} className={classes.panelText}>
+                                                Answer the questions below to help us find your
+                                                new and exciting passion!
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Grid>
+                            <Grid item>
+                                <StartQuizButton/>
+                            </Grid>
+                        </Grid>
+                    </Route>
 
-    </div>
-  );
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
