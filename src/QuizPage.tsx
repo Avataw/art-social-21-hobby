@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, createStyles, Grid, LinearProgress, makeStyles, Theme, Typography} from "@material-ui/core";
 import {YesButton} from "./YesButton";
 import {NoButton} from "./NoButton";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -31,14 +32,25 @@ const useStyles = makeStyles((theme: Theme) =>
 interface QuizPageProps {
     question: string,
     description?: string,
-    imageLocation : string,
+    imageLocation: string,
     progress: number,
     nextPage: string,
+    final?: boolean
 }
 
-function QuizPage({question, description, imageLocation, progress, nextPage} : QuizPageProps) {
+function QuizPage({question, description, imageLocation, progress, nextPage, final}: QuizPageProps) {
 
     const classes = useStyles();
+    let history = useHistory();
+
+    useEffect(() => {
+        setTimeout(function () {
+            if (final === true) {
+                history.push("/hobbies")
+            }
+        }, 3000);
+    }, [final, history]);
+
 
     return <Grid container
                  alignItems="center"
@@ -76,11 +88,12 @@ function QuizPage({question, description, imageLocation, progress, nextPage} : Q
                 </Grid>
             </Box>
         </Grid>
+        {final && <Grid item> <Typography variant={"h4"} align={"center"}>Wir suchen...</Typography></Grid>}
         <Grid item>
-            <NoButton nextUrl={nextPage}/>
+            {(final === undefined || !final) && <NoButton nextUrl={nextPage}/>}
         </Grid>
         <Grid item>
-            <YesButton nextUrl={nextPage}/>
+            {(final === undefined || !final) && <YesButton nextUrl={nextPage}/>}
         </Grid>
     </Grid>;
 }

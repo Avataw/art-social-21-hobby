@@ -1,5 +1,6 @@
-import {Box, createStyles, Grid, makeStyles, Theme, Typography} from "@material-ui/core";
+import {Button, createStyles, Grid, makeStyles, Theme, Typography} from "@material-ui/core";
 import React from "react";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -8,10 +9,10 @@ const useStyles = makeStyles((theme: Theme) =>
             transform: 'rotate(5deg)',
         },
         buttonText: {
-            color: theme.palette.primary.contrastText
+            color: theme.palette.secondary.contrastText
         },
         buttonPanel: {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.secondary.main,
             borderRadius: '10%',
             transform: 'rotate(-5deg)',
         },
@@ -30,8 +31,13 @@ interface ResultProps {
 
 export function Result({title, description, image} : ResultProps) {
     const classes = useStyles();
+    let history = useHistory();
 
-    return <Box className={classes.buttonPanel}>
+    function handleClick() {
+        history.push("/result");
+    }
+
+    return <Button className={classes.buttonPanel} onClick={handleClick}>
             <Grid container className={classes.button}
                   alignItems="center"
                   justify="center"
@@ -53,5 +59,5 @@ export function Result({title, description, image} : ResultProps) {
                     </Grid>
                 </Grid>
             </Grid>
-        </Box>
+        </Button>
 }

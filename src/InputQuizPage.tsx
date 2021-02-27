@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         quizPanel: {
             marginTop: "20px",
-            height: '50vh',
+            height: '25rem',
             border: '3px solid',
         },
         quizProgress: {
@@ -78,7 +78,7 @@ function InputQuizPage() {
             </Box>
         </Grid>
         <Grid item>
-            <NextQuestionButton nextUrl={"/secondQuizPage"} enabled={input != ""}/>
+            <NextQuestionButton nextUrl={"/secondQuizPage"} enabled={input !== ""}/>
         </Grid>
     </Grid>;
 }
