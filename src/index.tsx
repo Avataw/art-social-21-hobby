@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createMuiTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
+import {grey} from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
     palette: {
         primary: {
+            contrastText: grey[50],
             main: '#F8A5C2',
         },
         secondary: {
+            contrastText: grey[50],
             main: '#3DC1D3',
         },
     },
