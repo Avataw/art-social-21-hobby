@@ -1,6 +1,5 @@
 import {Box, Button, createStyles, makeStyles, Theme, Typography} from "@material-ui/core";
 import React from "react";
-import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,7 +23,7 @@ export function CallUsButton() {
     const classes = useStyles();
 
     return <Box className={classes.buttonPanel}>
-        <Button variant="outlined" size="large" className={classes.button}  >
+        <Button variant="outlined" size="large" className={classes.button}>
             <Typography variant={"h4"} className={classes.buttonText}>
                 Rufen Sie uns an!
             </Typography>

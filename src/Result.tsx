@@ -44,7 +44,7 @@ export function Result({title, description, image} : ResultProps) {
                   spacing={2}
             >
                 <Grid item xs={5}>
-                    { image && <img src={image} className={classes.resultImage}/>}
+                    { image && <img src={image} className={classes.resultImage} alt={"our matched hobby for you"}/>}
                 </Grid>
                 <Grid item xs={6}>
                     <Grid item xs={12}>
