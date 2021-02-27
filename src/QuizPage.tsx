@@ -58,7 +58,7 @@ function QuizPage({question, description, imageLocation, progress, nextPage, fin
                  spacing={2}>
         <Grid item xs={10}>
             <Typography variant={"h3"}>
-                Question {progress}/3:
+                Frage {progress}/3:
             </Typography>
         </Grid>
         <Grid item xs={10}>

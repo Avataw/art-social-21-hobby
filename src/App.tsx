@@ -129,13 +129,12 @@ function App() {
                                           spacing={1}>
                                         <Grid item xs={11}>
                                             <Typography variant={"h4"} className={classes.panelText}>
-                                                Looking for a hobby?
+                                                Suchst du <b>dein</b> hobby?
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={10}>
                                             <Typography variant={"h5"} className={classes.panelText}>
-                                                Answer the questions below to help us find your
-                                                new and exciting passion!
+                                              Wir helfen dir! Antworte einfach auf die Fragen in unserem Quiz!
                                             </Typography>
                                         </Grid>
                                     </Grid>

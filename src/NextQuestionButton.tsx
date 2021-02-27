@@ -38,7 +38,7 @@ export function NextQuestionButton({nextUrl, enabled} : NextQuestionButtonProps)
                 disabled={!enabled}
                 onClick={handleClick}>
             <Typography variant={"h4"} className={classes.buttonText}>
-                Next Question!
+                Nächste Frage!
             </Typography>
         </Button>
     </Box>;

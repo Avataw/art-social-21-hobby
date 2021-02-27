@@ -32,7 +32,7 @@ export function StartQuizButton() {
         <Button variant="outlined" size="large" className={classes.button}
                 onClick={handleClick}>
             <Typography variant={"h4"} className={classes.buttonText}>
-                Start Quiz!
+                Quiz Starten!
             </Typography>
         </Button>
     </Box>;

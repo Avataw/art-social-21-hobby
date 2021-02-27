@@ -43,7 +43,7 @@ function InputQuizPage() {
                  spacing={2}>
         <Grid item xs={10}>
             <Typography variant={"h3"}>
-                Question 1/3:
+                Frage 1/3:
             </Typography>
         </Grid>
         <Grid item xs={10}>
@@ -60,7 +60,7 @@ function InputQuizPage() {
 
                     <Grid item xs={10}>
                         <Typography variant={"h4"} align={"center"}>
-                            Where are you?
+                            Wo suchst du denn?
                         </Typography>
                     </Grid>
 
