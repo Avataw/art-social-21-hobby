@@ -1,11 +1,13 @@
 import React from 'react';
 import {HobbyAppBar} from "./HobbyAppBar";
-import {Box, createStyles, Grid, Input, LinearProgress, makeStyles, Theme, Typography} from "@material-ui/core";
+import {Box, createStyles, Grid, makeStyles, Theme, Typography} from "@material-ui/core";
 import searching from "./undraw/undraw_searching.svg"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {StartQuizButton} from "./StartQuizButton";
-import location from "./undraw/undraw_my_location.svg"
-import {NextQuestionButton} from "./NextQuestionButton";
+import QuizPage from "./QuizPage";
+import InputQuizPage from "./InputQuizPage";
+import building from "./undraw/undraw_building_blocks.svg"
+import outdoor from "./undraw/undraw_fitness_tracker.svg"
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -14,26 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         media: {
             width: '100%',
-        },
-        quizImage: {
-            marginTop: "-20px",
-            width: '35%',
-        },
-        quizPanel: {
-            marginTop: "20px",
-            height: '50vh',
-            border: '3px solid',
-        },
-        quizProgress: {
-            height: '15px',
-            border: '3px solid',
-        },
-        quizInput: {
-            border: '3px solid',
-            fontSize: "30px"
-        },
-        quizGrid: {
-            paddingTop: "20px",
         },
         panel: {
             height: '35vh',
@@ -57,95 +39,18 @@ function App() {
             <div className={classes.root}>
                 <HobbyAppBar/>
                 <Switch>
+                    <Route path="/thirdQuizPage">
+                        <QuizPage question={"Willst du raus?"}
+                                  description={"Bist du sehr gerne im freien und atmest frische Luft?"}
+                                  imageLocation={outdoor} progress={3}/>
+                    </Route>
                     <Route path="/secondQuizPage">
-                        <Grid container
-                              alignItems="center"
-                              justify="center"
-                              spacing={2}>
-                            <Grid item xs={10}>
-                                <Typography variant={"h3"}>
-                                    Question 1/3:
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={10}>
-                                <LinearProgress variant="determinate" value={33} color={"secondary"}
-                                                className={classes.quizProgress}/>
-                            </Grid>
-                            <Grid item xs={10}>
-                                <Box className={classes.quizPanel}>
-
-                                    <img src={location} className={classes.quizImage} alt={"mobile phone with location"}/>
-
-                                    <Grid className={classes.quizGrid} container alignItems={"center"} justify="center"
-                                          spacing={5}>
-
-                                        <Grid item xs={10}>
-                                            <Typography variant={"h4"} align={"center"}>
-                                                Where are you?
-                                            </Typography>
-                                        </Grid>
-
-                                        <Grid item xs={4}>
-                                            <Typography variant={"h4"}>
-                                                PLZ:
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Input id="outlined-basic"
-                                                   className={classes.quizInput}/>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </Grid>
-                            <Grid item>
-                                <NextQuestionButton nextUrl={"/secondQuizPage"}/>
-                            </Grid>
-                        </Grid>
+                        <QuizPage question={"Zwei rechte Hände?"}
+                                  description={"Magst du es Dinge mit deinen Händen zu berühren oder zu bauen?"}
+                                  imageLocation={building} progress={2}/>
                     </Route>
                     <Route path="/quiz">
-                        <Grid container
-                              alignItems="center"
-                              justify="center"
-                              spacing={2}>
-                            <Grid item xs={10}>
-                                <Typography variant={"h3"}>
-                                    Question 1/3:
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={10}>
-                                <LinearProgress variant="determinate" value={33} color={"secondary"}
-                                                className={classes.quizProgress}/>
-                            </Grid>
-                            <Grid item xs={10}>
-                                <Box className={classes.quizPanel}>
-
-                                    <img src={location} className={classes.quizImage} alt={"mobile phone with location"}/>
-
-                                    <Grid className={classes.quizGrid} container alignItems={"center"} justify="center"
-                                          spacing={5}>
-
-                                        <Grid item xs={10}>
-                                            <Typography variant={"h4"} align={"center"}>
-                                                Where are you?
-                                            </Typography>
-                                        </Grid>
-
-                                        <Grid item xs={4}>
-                                            <Typography variant={"h4"}>
-                                                PLZ:
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Input id="outlined-basic"
-                                                   className={classes.quizInput}/>
-                                        </Grid>
-                                    </Grid>
-                                </Box>
-                            </Grid>
-                            <Grid item>
-                                <NextQuestionButton nextUrl={"/secondQuizPage"}/>
-                            </Grid>
-                        </Grid>
+                        <InputQuizPage/>
                     </Route>
                     <Route path="/">
                         <Grid container
