@@ -8,12 +8,13 @@ import QuizPage from "./QuizPage";
 import InputQuizPage from "./InputQuizPage";
 import building from "./undraw/undraw_building_blocks.svg"
 import outdoor from "./undraw/undraw_fitness_tracker.svg"
+import welldone from "./undraw/undraw_well_done.svg"
+import {Result} from "./Result";
+import bees from "./bees.jpeg";
+
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            overflow: 'hidden',
-        },
         media: {
             width: '100%',
         },
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingTop: "5%",
             transform: 'rotate(-10deg)',
             color: theme.palette.secondary.contrastText
+        },
+        result: {
+            margin: "20px"
         }
     }),
 );
@@ -36,18 +40,55 @@ function App() {
 
     return (
         <Router>
-            <div className={classes.root}>
+            <div>
                 <HobbyAppBar/>
                 <Switch>
+                    <Route path="/hobbies">
+                        <Grid container
+                              alignItems="center"
+                              justify="center">
+                            <Grid item>
+                                <Typography variant={"h4"} align={"center"}>
+                                    Wie wäre es denn hiermit?
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={10} className={classes.result}>
+                                <Result title={"Bund!"}
+                                        description={"Wir kümmern uns um Bienen und sind..."}
+                                        image={bees}/>
+
+                            </Grid>
+                            <Grid item xs={10} className={classes.result}>
+                                <Result title={"Bund!"}
+                                        description={"Wir kümmern uns um Bienen und sind..."}
+                                        image={bees}/>
+
+                            </Grid>
+                            <Grid item xs={10} className={classes.result}>
+                                <Result title={"Bund!"}
+                                        description={"Wir kümmern uns um Bienen und sind..."}
+                                        image={bees}/>
+
+                            </Grid>
+                        </Grid>
+                    </Route>
+                    <Route path="/success">
+                        <QuizPage question={"Super!"}
+                                  description={"Wir suchen gerade nach passenden Hobbies für dich..."}
+                                  imageLocation={welldone} progress={3}
+                                  nextPage={"/hobbies"}/>
+                    </Route>
                     <Route path="/thirdQuizPage">
                         <QuizPage question={"Willst du raus?"}
                                   description={"Bist du sehr gerne im freien und atmest frische Luft?"}
-                                  imageLocation={outdoor} progress={3}/>
+                                  imageLocation={outdoor} progress={2}
+                                  nextPage={"/success"}/>
                     </Route>
                     <Route path="/secondQuizPage">
                         <QuizPage question={"Zwei rechte Hände?"}
                                   description={"Magst du es Dinge mit deinen Händen zu berühren oder zu bauen?"}
-                                  imageLocation={building} progress={2}/>
+                                  imageLocation={building} progress={1}
+                                  nextPage={"/thirdQuizPage"}/>
                     </Route>
                     <Route path="/quiz">
                         <InputQuizPage/>

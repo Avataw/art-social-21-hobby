@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface NextQuestionButtonProps {
-    nextUrl: string
+    nextUrl: string,
+    enabled : boolean
 }
 
-export function NextQuestionButton({nextUrl} : NextQuestionButtonProps) {
+export function NextQuestionButton({nextUrl, enabled} : NextQuestionButtonProps) {
 
     const classes = useStyles();
     let history = useHistory();
@@ -34,6 +35,7 @@ export function NextQuestionButton({nextUrl} : NextQuestionButtonProps) {
 
     return <Box className={classes.buttonPanel}>
         <Button variant="outlined" size="large" className={classes.button}
+                disabled={!enabled}
                 onClick={handleClick}>
             <Typography variant={"h4"} className={classes.buttonText}>
                 Next Question!

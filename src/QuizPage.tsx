@@ -33,9 +33,10 @@ interface QuizPageProps {
     description?: string,
     imageLocation : string,
     progress: number,
+    nextPage: string,
 }
 
-function QuizPage({question, description, imageLocation, progress} : QuizPageProps) {
+function QuizPage({question, description, imageLocation, progress, nextPage} : QuizPageProps) {
 
     const classes = useStyles();
 
@@ -76,10 +77,10 @@ function QuizPage({question, description, imageLocation, progress} : QuizPagePro
             </Box>
         </Grid>
         <Grid item>
-            <NoButton nextUrl={"/thirdQuizPage"}/>
+            <NoButton nextUrl={nextPage}/>
         </Grid>
         <Grid item>
-            <YesButton nextUrl={"/thirdQuizPage"}/>
+            <YesButton nextUrl={nextPage}/>
         </Grid>
     </Grid>;
 }

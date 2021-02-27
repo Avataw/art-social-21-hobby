@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, createStyles, Grid, Input, LinearProgress, makeStyles, Theme, Typography} from "@material-ui/core";
 import location from "./undraw/undraw_my_location.svg"
 import {NextQuestionButton} from "./NextQuestionButton";
@@ -30,8 +30,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 function InputQuizPage() {
-
     const classes = useStyles();
+    const [input, setInput] = useState("");
+
+    function handleInputChanged(event: any) {
+        setInput(event.target.value);
+    }
 
     return <Grid container
                  alignItems="center"
@@ -43,7 +47,7 @@ function InputQuizPage() {
             </Typography>
         </Grid>
         <Grid item xs={10}>
-            <LinearProgress variant="determinate" value={33} color={"secondary"}
+            <LinearProgress variant="determinate" value={0} color={"secondary"}
                             className={classes.quizProgress}/>
         </Grid>
         <Grid item xs={10}>
@@ -67,13 +71,14 @@ function InputQuizPage() {
                     </Grid>
                     <Grid item xs={6}>
                         <Input id="outlined-basic"
-                               className={classes.quizInput}/>
+                               className={classes.quizInput}
+                        onInput={handleInputChanged}/>
                     </Grid>
                 </Grid>
             </Box>
         </Grid>
         <Grid item>
-            <NextQuestionButton nextUrl={"/secondQuizPage"}/>
+            <NextQuestionButton nextUrl={"/secondQuizPage"} enabled={input != ""}/>
         </Grid>
     </Grid>;
 }
